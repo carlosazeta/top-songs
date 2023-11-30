@@ -2,11 +2,12 @@ import './App.css'
 import ListOfTracks from './components/ListOfTracks'
 
 function App() {
-	const playlistId = '37i9dQZEVXbNFJfN1Vw8d9'
+	const playlistSpainId = '37i9dQZEVXbNFJfN1Vw8d9'
 
 	return (
 		<>
-			<ListOfTracks playlistId={playlistId} />
+			<h1>20 top songs</h1>
+			<ListOfTracks playlistId={playlistSpainId} />
 		</>
 	)
 }
