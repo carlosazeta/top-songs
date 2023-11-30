@@ -64,3 +64,13 @@ export interface SpotifyApiResponse {
 export type PlaylistId = string
 
 export type Token = string
+
+export type Score = number
+
+interface ScoreMessages {
+	[key: number]: string
+}
+
+interface ScoreMessageProps {
+	score: Score
+}

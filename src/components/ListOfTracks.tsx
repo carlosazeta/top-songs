@@ -4,6 +4,8 @@ import useSpotifyAuth from '../hooks/useSpotifyAuth'
 import { PlaylistId } from '../types'
 import TrackCard from './TrackCard'
 import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion'
+import ScoreMessage from './ScoreMessage'
+import Loading from './Loading'
 
 const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	const [currentIndex, setCurrentIndex] = useState(0)
@@ -11,7 +13,7 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	const token = useSpotifyAuth()
 	const { data, loading, error } = useSpotifyApi(token, playlistId)
 
-	const firstTwentyTracks = data?.items.slice(0, 20) || []
+	const firstTwentyTracks = data?.items.slice(0, 10) || []
 
 	const x = useMotionValue(0)
 
@@ -33,7 +35,7 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	}
 
 	const handleDragEnd = (
-		e: MouseEvent | TouchEvent | PointerEvent,
+		_e: MouseEvent | TouchEvent | PointerEvent,
 		{ offset }: PanInfo
 	) => {
 		const swipeThreshold = 90
@@ -46,27 +48,30 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 		}
 	}
 
-	if (loading) return <p>Loading...</p>
+	if (loading) return <Loading />
 	if (error) return <p>{error.message}</p>
 
 	return (
-		<motion.div
-			style={{ background }}
-			className='min-h-screen min-w-full flex justify-center items-center'
-		>
-			{firstTwentyTracks.length > currentIndex && (
-				<div className='border-4 rounded-md p-4'>
-					<motion.div
-						drag='x'
-						dragConstraints={{ left: 0, right: 0 }}
-						style={{ x, rotate }}
-						onDragEnd={handleDragEnd}
-					>
-						<TrackCard trackData={firstTwentyTracks[currentIndex].track} />
-					</motion.div>
-				</div>
-			)}
-		</motion.div>
+		<div>
+			<motion.div
+				style={{ background }}
+				className='min-h-screen min-w-full flex flex-col justify-center items-center'
+			>
+				<ScoreMessage score={score} />
+				{firstTwentyTracks.length > currentIndex && (
+					<div className='border-4 rounded-md p-4 mt-14'>
+						<motion.div
+							drag='x'
+							dragConstraints={{ left: 0, right: 0 }}
+							style={{ x, rotate }}
+							onDragEnd={handleDragEnd}
+						>
+							<TrackCard trackData={firstTwentyTracks[currentIndex].track} />
+						</motion.div>
+					</div>
+				)}
+			</motion.div>
+		</div>
 	)
 }
 
