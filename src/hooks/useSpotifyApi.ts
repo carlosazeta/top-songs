@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { SpotifyApiResponse } from '../types'
+import { PlaylistId, SpotifyApiResponse, Token } from '../types'
 
-const useSpotifyApi = (token: string, playlistId: string) => {
+const useSpotifyApi = (token: Token, playlistId: PlaylistId) => {
 	const [data, setData] = useState<SpotifyApiResponse | null>(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)

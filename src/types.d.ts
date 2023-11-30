@@ -62,3 +62,5 @@ export interface SpotifyApiResponse {
 }
 
 export type PlaylistId = string
+
+export type Token = string

@@ -6,9 +6,9 @@ const TrackCard = ({ trackData }: { trackData: Track }) => {
 	}
 
 	return (
-		<div>
-			<img src={trackData.album.images[1].url} alt='' />
-			<p>Track name {trackData.name}</p>
+		<div className='p-3'>
+			<img className='' src={trackData.album.images[1].url} alt='' />
+			<p>{trackData.name}</p>
 			<p>{getArtistNames(trackData.artists)}</p>
 		</div>
 	)

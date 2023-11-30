@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Token } from '../types'
 
 const useSpotifyAuth = () => {
-	const [token, setToken] = useState<string>('')
+	const [token, setToken] = useState<Token>('')
 
 	useEffect(() => {
 		const client_id = import.meta.env.VITE_CLIENT_ID
