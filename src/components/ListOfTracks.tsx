@@ -7,6 +7,7 @@ import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion'
 import ScoreMessage from './ScoreMessage'
 import Loading from './Loading'
 import ResultMessage from './ResultMessage'
+import CircleReveal from './CircleReveal'
 
 const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	const [currentIndex, setCurrentIndex] = useState(0)
@@ -55,7 +56,9 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	return (
 		<>
 			{firstTenTracks.length <= currentIndex ? (
-				<ResultMessage score={score} />
+				<CircleReveal>
+					<ResultMessage score={score} />
+				</CircleReveal>
 			) : (
 				<div>
 					<motion.div

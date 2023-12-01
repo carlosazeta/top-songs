@@ -6,7 +6,7 @@ const ScoreMessage = ({ score }: ScoreMessageProps) => {
 	return (
 		<div className='flex justify-center text-white text-2xl font-semibold antialiased w-4/5'>
 			{score > 0 ? (
-				message
+				<p className='text-center'>{message}</p>
 			) : (
 				<p className='text-center'>
 					Swipea DERECHA si conoces la canción o IZQUIERDA si no tienes ni idea
