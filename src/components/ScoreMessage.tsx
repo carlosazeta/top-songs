@@ -8,7 +8,9 @@ const ScoreMessage = ({ score }: ScoreMessageProps) => {
 			{score > 0 ? (
 				message
 			) : (
-				<p className='text-center'>Swipea DERECHA si conoces la canción</p>
+				<p className='text-center'>
+					Swipea DERECHA si conoces la canción o IZQUIERDA si no tienes ni idea
+				</p>
 			)}
 		</div>
 	)

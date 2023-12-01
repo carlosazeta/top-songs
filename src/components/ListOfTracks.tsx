@@ -6,6 +6,7 @@ import TrackCard from './TrackCard'
 import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion'
 import ScoreMessage from './ScoreMessage'
 import Loading from './Loading'
+import ResultMessage from './ResultMessage'
 
 const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	const [currentIndex, setCurrentIndex] = useState(0)
@@ -13,7 +14,7 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	const token = useSpotifyAuth()
 	const { data, loading, error } = useSpotifyApi(token, playlistId)
 
-	const firstTwentyTracks = data?.items.slice(0, 10) || []
+	const firstTenTracks = data?.items.slice(0, 10) || []
 
 	const x = useMotionValue(0)
 
@@ -52,26 +53,30 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 	if (error) return <p>{error.message}</p>
 
 	return (
-		<div>
-			<motion.div
-				style={{ background }}
-				className='min-h-screen min-w-full flex flex-col justify-center items-center'
-			>
-				<ScoreMessage score={score} />
-				{firstTwentyTracks.length > currentIndex && (
-					<div className='border-4 rounded-md p-4 mt-14'>
-						<motion.div
-							drag='x'
-							dragConstraints={{ left: 0, right: 0 }}
-							style={{ x, rotate }}
-							onDragEnd={handleDragEnd}
-						>
-							<TrackCard trackData={firstTwentyTracks[currentIndex].track} />
-						</motion.div>
-					</div>
-				)}
-			</motion.div>
-		</div>
+		<>
+			{firstTenTracks.length <= currentIndex ? (
+				<ResultMessage score={score} />
+			) : (
+				<div>
+					<motion.div
+						style={{ background }}
+						className='min-h-screen min-w-full flex flex-col justify-center items-center'
+					>
+						<ScoreMessage score={score} />
+						<div className='border-4 rounded-md p-4 mt-14'>
+							<motion.div
+								drag='x'
+								dragConstraints={{ left: 0, right: 0 }}
+								style={{ x, rotate }}
+								onDragEnd={handleDragEnd}
+							>
+								<TrackCard trackData={firstTenTracks[currentIndex].track} />
+							</motion.div>
+						</div>
+					</motion.div>
+				</div>
+			)}
+		</>
 	)
 }
 
