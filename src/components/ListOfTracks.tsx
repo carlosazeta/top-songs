@@ -39,7 +39,7 @@ const ListOfTracks = ({ playlistId }: { playlistId: PlaylistId }) => {
 		{ offset }: PanInfo
 	) => {
 		const swipeThreshold = 90
-		const userSwipe = Math.abs(offset.x)
+		const userSwipe = offset.x
 
 		if (userSwipe > swipeThreshold) {
 			handleSwipeRight()
