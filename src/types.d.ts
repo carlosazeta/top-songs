@@ -38,6 +38,7 @@ interface Track {
 	artists: Artist[]
 	name: string
 	id: string
+	preview_url: string
 	// ... otras propiedades de Track que necesites ...
 }
 
