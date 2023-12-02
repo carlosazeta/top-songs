@@ -24,7 +24,7 @@ const useSpotifyAuth = () => {
 				setToken(response.data.access_token)
 			})
 			.catch((error) => {
-				console.log('Error obtaining Spotify token', error)
+				throw new Error(error.message)
 			})
 	}, [])
 
