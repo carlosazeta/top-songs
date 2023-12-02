@@ -39,17 +39,12 @@ interface Track {
 	name: string
 	id: string
 	preview_url: string
-	// ... otras propiedades de Track que necesites ...
 }
 
 interface SpotifyTrackItem {
 	added_at: string
-	added_by: {
-		// ... detalles de added_by ...
-	}
 	is_local: boolean
 	track: Track
-	// ... otras propiedades que pueda tener cada item ...
 }
 
 export interface SpotifyApiResponse {
