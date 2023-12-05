@@ -1,30 +1,12 @@
-# React + TypeScript + Vite
+# Top 10 Songs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website created with TypeScript, React and Framer Motion.
 
-Currently, two official plugins are available:
+- It shows the first 10 songs of the current hitlist and you have to swipe to the right if you know it and to the left if not.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- At the end it will give you a funny score depending on how many songs you know.
 
-## Expanding the ESLint configuration
+You can try it [HERE](https://top-songs-six.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![Captura de pantalla 05 12 2023 a 06 01 30 a  m](https://github.com/carlosazeta/top-songs/assets/78436847/44da0e0a-52be-47a9-8e15-887357b43028)
+![Captura de pantalla 2023-12-05 a las 6 02 16 (2)](https://github.com/carlosazeta/top-songs/assets/78436847/84ca1cb4-bea6-470a-8e84-59cf89faeb5f)
